@@ -5,7 +5,7 @@ html { scroll-behavior: smooth; scroll-padding-top: 72px; }
 body { margin: 0; background: var(--c-bg); color: var(--c-text); font-family: var(--f-sans);
   font-size: var(--t-body); line-height: var(--lh-body); word-break: keep-all; overflow-wrap: anywhere; }
 a { color: inherit; }
-a:focus-visible, button:focus-visible { outline: 2px solid var(--c-accent); outline-offset: 2px; border-radius: 4px; }
+a:focus-visible, button:focus-visible { outline: 2px solid var(--c-accent); outline-offset: 2px; }
 .muted { color: var(--c-muted); }
 .num { color: var(--c-accent); font-weight: 700; font-variant-numeric: tabular-nums; white-space: nowrap; }
 .nb { white-space: nowrap; }
@@ -60,7 +60,7 @@ a:focus-visible, button:focus-visible { outline: 2px solid var(--c-accent); outl
 .steps { list-style: none; margin: 0 0 var(--s-3); padding: 0; counter-reset: st; }
 .steps li { position: relative; padding: 0 0 var(--s-3) 40px; margin: 0; }
 .steps li::before { counter-increment: st; content: counter(st); position: absolute; left: 0; top: 1px; width: 26px; height: 26px;
-  border-radius: 50%; display: grid; place-items: center; font-size: 13px; font-weight: 700; background: var(--c-bg); border: 1px solid var(--c-line); }
+  border-radius: var(--r-dot); display: grid; place-items: center; font-size: 13px; font-weight: 700; background: var(--c-bg); border: 1px solid var(--c-line); }
 .steps li:not(:last-child)::after { content: ""; position: absolute; left: 13px; top: 30px; bottom: 2px; width: 1px; background: var(--c-line); }
 .steps li.best::before { background: var(--c-action); color: var(--c-on-action); border-color: var(--c-action); }
 .steps b { display: block; font-size: 15px; }
@@ -73,7 +73,7 @@ a:focus-visible, button:focus-visible { outline: 2px solid var(--c-accent); outl
 .ba .to { color: var(--c-accent); font-weight: 700; }
 
 /* 화면 사진 */
-.shot { display: block; width: 120px; border-radius: 14px; border: 1px solid var(--c-line); }
+.shot { display: block; width: 120px; border-radius: var(--r-shot); border: 1px solid var(--c-line); }
 .with-shot { display: grid; grid-template-columns: 1fr 120px; gap: var(--s-4); align-items: start; }
 
 /* 목록·표 */

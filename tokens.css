@@ -14,7 +14,9 @@
   --c-hero: color-mix(in srgb, var(--c-text) 7%, var(--c-bg));
 
   /* 글꼴 */
-  --f-sans: "Pretendard Variable", "Pretendard", "Apple SD Gothic Neo", "Malgun Gothic", system-ui, sans-serif;
+  /* 쿠키런(데브시스터즈, 상업적 사용 허용·임베딩 시 출처 표기). 게임 산업군 2차 창작만 금지 — 개인 소개 사이트는 해당 없음.
+     굵기 400·700·900. 바닥글에 출처를 적는다(index.html). */
+  --f-sans: "CookieRun", "Apple SD Gothic Neo", "Malgun Gothic", system-ui, sans-serif;
   --t-name: 44px; --t-name-sm: 32px;
   --t-h2: 18px; --t-h3: 17px; --t-lead: 17px; --t-body: 16px; --t-sm: 14px; --t-xs: 12px;
   --lh-body: 1.7; --lh-head: 1.25;
@@ -26,7 +28,8 @@
   --w-text: 640px; --w-wide: 1000px; --w-nav: 1000px;
 
   /* 모양 */
-  --r-card: 12px; --r-btn: 8px; --r-tag: 6px; --r-pill: 999px;
+  /* 모서리 — 사용자 결정(2026-11-02): 둥근 모서리를 모두 없앤다 */
+  --r-card: 0; --r-btn: 0; --r-tag: 0; --r-pill: 0; --r-dot: 0; --r-shot: 0;
   --target: 44px;
   --dur: 150ms;
 }
