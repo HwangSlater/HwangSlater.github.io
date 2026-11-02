@@ -25,7 +25,7 @@ a:focus-visible, button:focus-visible { outline: 2px solid var(--c-accent); outl
 
 /* 단추 */
 .btn { display: inline-flex; align-items: center; justify-content: center; gap: var(--s-2); min-height: var(--target);
-  padding: 0 var(--s-5); border-radius: var(--r-btn); font-weight: 600; font-size: 15px; text-decoration: none;
+  padding: 0 var(--s-5); border-radius: var(--r-btn); font-weight: 600; font-size: var(--t-md); text-decoration: none;
   transition: background var(--dur), border-color var(--dur); }
 .btn-primary { background: var(--c-action); color: var(--c-on-action); }
 .btn-primary:hover { background: color-mix(in srgb, var(--c-action) 86%, black); }
@@ -37,20 +37,20 @@ a:focus-visible, button:focus-visible { outline: 2px solid var(--c-accent); outl
 .sec-head { display: flex; justify-content: space-between; align-items: baseline; gap: var(--s-3); margin-bottom: var(--s-4); }
 .sec-head h2 { font-size: var(--t-h2); line-height: var(--lh-head); margin: 0; }
 .sec-head a { font-size: var(--t-sm); color: var(--c-muted); }
-.col-label { display: flex; align-items: center; gap: var(--s-2); font-size: 13px; font-weight: 700; color: var(--c-accent); margin: 0 0 var(--s-3); }
+.col-label { display: flex; align-items: center; gap: var(--s-2); font-size: var(--t-cap); font-weight: 700; color: var(--c-accent); margin: 0 0 var(--s-3); }
 .col-label::before { content: ""; width: 14px; height: 2px; background: currentColor; }
 
 /* 카드 */
 .card { padding: var(--s-5); border-radius: var(--r-card); background: var(--c-surface); border: 1px solid var(--c-line); margin-bottom: var(--s-3); }
 .card h3 { font-size: var(--t-h3); line-height: var(--lh-head); margin: 0 0 var(--s-1); }
 .card .when { font-size: var(--t-xs); color: var(--c-muted); margin: 0 0 var(--s-3); }
-.card p { margin: 0 0 var(--s-3); font-size: 15px; }
-.card ul { margin: 0 0 var(--s-3); padding-left: 18px; font-size: 15px; }
+.card p { margin: 0 0 var(--s-3); font-size: var(--t-md); }
+.card ul { margin: 0 0 var(--s-3); padding-left: 18px; font-size: var(--t-md); }
 .card li { margin-bottom: var(--s-1); }
 .card .links { display: flex; flex-wrap: wrap; gap: var(--s-2) var(--s-4); font-size: var(--t-sm); }
 .card .links a { display: inline-flex; align-items: center; min-height: 32px; color: var(--c-accent); font-weight: 600; text-decoration: none; }
 .card .links a:hover { text-decoration: underline; }
-.card .links a::after { content: "↗"; margin-left: 3px; font-size: 12px; }
+.card .links a::after { content: "↗"; margin-left: 3px; font-size: var(--t-xs); }
 
 /* 태그 */
 .tags { display: flex; flex-wrap: wrap; gap: 6px; margin: 0; padding: 0; list-style: none; }
@@ -60,10 +60,10 @@ a:focus-visible, button:focus-visible { outline: 2px solid var(--c-accent); outl
 .steps { list-style: none; margin: 0 0 var(--s-3); padding: 0; counter-reset: st; }
 .steps li { position: relative; padding: 0 0 var(--s-3) 40px; margin: 0; }
 .steps li::before { counter-increment: st; content: counter(st); position: absolute; left: 0; top: 1px; width: 26px; height: 26px;
-  border-radius: var(--r-dot); display: grid; place-items: center; font-size: 13px; font-weight: 700; background: var(--c-bg); border: 1px solid var(--c-line); }
+  border-radius: var(--r-dot); display: grid; place-items: center; font-size: var(--t-cap); font-weight: 700; background: var(--c-bg); border: 1px solid var(--c-line); }
 .steps li:not(:last-child)::after { content: ""; position: absolute; left: 13px; top: 30px; bottom: 2px; width: 1px; background: var(--c-line); }
 .steps li.best::before { background: var(--c-action); color: var(--c-on-action); border-color: var(--c-action); }
-.steps b { display: block; font-size: 15px; }
+.steps b { display: block; font-size: var(--t-md); }
 .steps > li > span { display: block; font-size: var(--t-sm); color: var(--c-muted); }
 
 /* 전 → 후 */
@@ -89,11 +89,11 @@ a:focus-visible, button:focus-visible { outline: 2px solid var(--c-accent); outl
 .dock { position: sticky; bottom: var(--s-4); z-index: 4; display: flex; justify-content: center; pointer-events: none; margin-top: var(--s-10); }
 .dock .btn { pointer-events: auto; box-shadow: 0 6px 20px color-mix(in srgb, var(--c-text) 22%, transparent); }
 
-.foot { margin-top: var(--s-10); padding: var(--s-6) 0 var(--s-10); border-top: 1px solid var(--c-line); font-size: 13px; color: var(--c-muted);
+.foot { margin-top: var(--s-10); padding: var(--s-6) 0 var(--s-10); border-top: 1px solid var(--c-line); font-size: var(--t-cap); color: var(--c-muted);
   display: flex; justify-content: space-between; gap: var(--s-3); flex-wrap: wrap; }
 
 @media (max-width: 640px) {
-  .tabs a { padding: 0 var(--s-2); font-size: 13px; }
+  .tabs a { padding: 0 var(--s-2); font-size: var(--t-cap); }
   .tabs .opt { display: none; }
   .can li, .rows { grid-template-columns: 1fr; gap: 2px; }
   .rows dd { margin-bottom: var(--s-2); }
@@ -140,8 +140,11 @@ a:focus-visible, button:focus-visible { outline: 2px solid var(--c-accent); outl
 
 /* 고민 상자 — 해 보지 않은 다음 단계를 「설계·측정 전」으로 정직하게 보여 준다 */
 .think { margin: 0 0 var(--s-3); padding: var(--s-4); border-radius: var(--r-btn); background: var(--c-bg); border: 1px dashed color-mix(in srgb, var(--c-text) 26%, var(--c-bg)); }
-.think-h { display: flex; flex-wrap: wrap; align-items: center; gap: var(--s-2); margin: 0 0 var(--s-3); font-size: 15px; font-weight: 700; }
+.think-h { display: flex; flex-wrap: wrap; align-items: center; gap: var(--s-2); margin: 0 0 var(--s-3); font-size: var(--t-md); font-weight: 700; }
 .badge { font-size: var(--t-xs); font-weight: 600; padding: 1px 8px; border-radius: var(--r-pill); color: var(--c-accent); border: 1px solid color-mix(in srgb, var(--c-accent) 40%, var(--c-bg)); }
 .think-list { display: grid; grid-template-columns: 84px 1fr; gap: var(--s-2) var(--s-3); margin: 0; font-size: var(--t-sm); }
 .think-list dt { font-weight: 700; } .think-list dd { margin: 0; color: var(--c-muted); }
 @media (max-width: 640px) { .think-list { grid-template-columns: 1fr; gap: 0; } .think-list dd { margin-bottom: var(--s-2); } }
+
+/* IoT 묶음 — 두 열 아래 한 줄 띄워 세 번째 갈래로 */
+.iot-label { margin-top: var(--s-10); }

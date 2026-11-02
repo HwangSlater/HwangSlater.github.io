@@ -18,7 +18,7 @@
      굵기 400·700·900. 바닥글에 출처를 적는다(index.html). */
   --f-sans: "CookieRun", "Apple SD Gothic Neo", "Malgun Gothic", system-ui, sans-serif;
   --t-name: 44px; --t-name-sm: 32px;
-  --t-h2: 18px; --t-h3: 17px; --t-lead: 17px; --t-body: 16px; --t-sm: 14px; --t-xs: 12px;
+  --t-h2: 18px; --t-h3: 17px; --t-lead: 17px; --t-body: 16px; --t-md: 15px; --t-sm: 14px; --t-cap: 13px; --t-xs: 12px;
   --lh-body: 1.7; --lh-head: 1.25;
 
   /* 간격 — 4px 단위 */
