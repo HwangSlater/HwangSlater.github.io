@@ -1,0 +1,198 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>문찬희 — 백엔드 · AX 개발</title>
+<meta property="og:title" content="문찬희 — 백엔드 · AX 개발">
+<meta property="og:description" content="현장에서 손으로 하던 일을 찾아, 실제로 돌아가는 서비스로 만듭니다.">
+<meta name="description" content="현장 문제를 받아 돌아가는 서비스로 만드는 백엔드 · AX 개발자 문찬희의 자기소개">
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+<link rel="stylesheet" href="tokens.css">
+<link rel="stylesheet" href="components.css">
+<style>
+  /* 이 페이지의 배치만 — 배치 3번: 해 온 것을 AX | 백엔드 두 열, 연락 단추 아래 고정 */
+  .hero { text-align: center; padding: var(--s-18) var(--s-5) var(--s-14);
+    background: radial-gradient(120% 90% at 50% 100%, var(--c-bg) 58%, var(--c-hero) 59%, var(--c-bg) 100%); }
+  .hero .hi { margin: 0; font-weight: 600; color: var(--c-muted); }
+  .hero h1 { font-size: var(--t-name); line-height: 1.15; margin: var(--s-1) 0 var(--s-3); letter-spacing: -0.02em; }
+  .hero .role { margin: 0 auto var(--s-6); max-width: 34em; color: var(--c-muted); font-size: var(--t-lead); }
+  .hero .btns { display: flex; gap: var(--s-2); justify-content: center; flex-wrap: wrap; }
+  .text { width: min(var(--w-text), 100% - 40px); margin-inline: auto; }
+  .wide { width: min(var(--w-wide), 100% - 40px); margin-inline: auto; }
+  .about p { margin: 0 0 var(--s-3); font-size: var(--t-lead); }
+  .two { display: grid; grid-template-columns: 1fr 1fr; gap: var(--s-6); align-items: start; }
+  @media (max-width: 880px) { .two { grid-template-columns: 1fr; gap: var(--s-8); } }
+  @media (max-width: 640px) { .hero h1 { font-size: var(--t-name-sm); } .hero { padding-top: var(--s-14); } }
+</style>
+</head>
+<body>
+<header class="nav">
+  <div class="nav-in">
+    <a class="brand" href="#top">문찬희</a>
+    <nav class="tabs" aria-label="구역 바로가기">
+      <a href="#top" aria-current="true">소개</a>
+      <a href="#work">프로젝트</a>
+      <a href="#can">기술</a>
+      <a class="opt" href="#contact">연락</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+  <div class="hero">
+    <p class="hi">안녕하세요, 저는</p>
+    <h1>문찬희</h1>
+    <p class="role">백엔드 · AX 개발 — 현장에서 손으로 하던 일을 찾아, 실제로 돌아가는 서비스로 만듭니다.</p>
+    <div class="btns">
+      <a class="btn btn-primary" href="https://open.kakao.com/o/sdQ2ldVi" target="_blank" rel="noopener">오픈채팅으로 연락<span class="sr">(새 창)</span></a>
+      <a class="btn btn-ghost" href="https://github.com/HwangSlater" target="_blank" rel="noopener">GitHub<span class="sr">(새 창)</span></a>
+    </div>
+  </div>
+
+  <section class="text about reveal">
+    <p>컴퓨터공학 전공 마지막 학기로, 지금은 현장실습에서 <b>새 서비스 기획·개발</b>과 <b>사내 자동화 도구</b>를 만들고 있습니다.</p>
+    <p class="muted">Spring으로 백엔드를 시작했고, 지금은 현장에서 사람이 반복하던 일을 찾아 AI와 자동화로 줄이는 일을 합니다. 만든 것은 직접 배포하고 운영하는 데까지 갑니다.</p>
+  </section>
+
+  <section class="wide sec" id="work" aria-labelledby="work-h">
+    <div class="sec-head"><h2 id="work-h">프로젝트</h2><a href="https://github.com/HwangSlater" target="_blank" rel="noopener">GitHub 전체 보기<span class="sr">(새 창)</span></a></div>
+    <div class="two">
+      <div>
+        <p class="col-label">AX — 현장 업무에 AI·자동화 붙이기</p>
+
+        <article class="card reveal">
+          <h3>발달장애인 AI 모의면접</h3>
+          <p class="when">현장실습 · 2026.10 ~</p>
+          <p>발달장애 성인이 혼자서도 반복해 연습할 수 있는 웹 모의면접입니다. 대상과 현장을 먼저 조사하고, 쉬운 말로 묻고 기다려 주는 면접을 설계했습니다.</p>
+          <ul>
+            <li>이력서를 바탕으로 질문을 만들고, 말로 답하면 음성 인식으로 받아 결과 리포트로 돌려줌</li>
+            <li>실제 사람처럼 말하는 가상 면접관 영상과 목소리</li>
+            <li>공공기관에서 시연</li>
+          </ul>
+          <ul class="tags"><li>React</li><li>TypeScript</li><li>서버리스 API</li><li>음성 인식</li></ul>
+        </article>
+
+        <article class="card reveal">
+          <h3>사내 반복 업무 자동화</h3>
+          <p class="when">현장실습 · 2026.09 ~</p>
+          <ul class="ba">
+            <li><span class="muted">콘솔을 보며 서버 현황을 위키에 옮겨 적기</span><span class="to">→</span><span>매일 자동으로 표 생성, 바뀐 것만 따로 기록</span></li>
+            <li><span class="muted">제품 호환성을 문서마다 열어 확인</span><span class="to">→</span><span>실제 문서 묶음으로 자동 검사</span></li>
+            <li><span class="muted">문서 속 용어를 사람이 하나씩 정리</span><span class="to">→</span><span>후보를 자동으로 뽑고 사람은 검수만</span></li>
+          </ul>
+          <ul class="tags"><li>Python</li><li>Node.js</li><li>Open API</li></ul>
+        </article>
+
+        <article class="card reveal">
+          <h3>Claude Code 플러그인·스킬</h3>
+          <p class="when">개인 · 공개</p>
+          <ul>
+            <li><b>harness-fit</b> — 프로젝트에 맞는 스킬·훅·규칙을 골라 한 번에 설치. 팀 규칙을 글이 아니라 자동 검사로</li>
+            <li><b>code-dependent</b> — 대화 기록으로 AI와 어떻게 일하는지 보여 주는 도구</li>
+            <li><b>ui-design-director</b> — 「깔끔하게 해 줘」를 색·글꼴·레이아웃 규칙으로 바꾸고, 시안을 비교해 고르게 하는 디자인 스킬. 이 사이트도 이걸로 만들었습니다</li>
+          </ul>
+          <div class="links">
+            <a href="https://github.com/HwangSlater/harness-fit" target="_blank" rel="noopener">harness-fit<span class="sr">(새 창)</span></a>
+            <a href="https://github.com/HwangSlater/code-dependent" target="_blank" rel="noopener">code-dependent<span class="sr">(새 창)</span></a>
+            <a href="https://github.com/HwangSlater/ui-design-director" target="_blank" rel="noopener">ui-design-director<span class="sr">(새 창)</span></a>
+          </div>
+        </article>
+      </div>
+
+      <div>
+        <p class="col-label">백엔드</p>
+
+        <article class="card reveal" style="--d:var(--stagger)">
+          <h3>선착순 쿠폰 — 발급 구조를 4단계로 다시 짜기</h3>
+          <p class="when">프로그래머스 단기심화 · MSA 중고거래 플랫폼 · 쿠폰 서비스 담당</p>
+          <ol class="steps">
+            <li><b>제어 없음</b><span>k6 부하 테스트에서 <span class="nb">100개</span> 한정 쿠폰이 <span class="nb">1,000건</span> 발급되는 것을 확인</span></li>
+            <li><b>DB 원자적 연산</b><span>조건부 UPDATE·Row Lock으로 정합성은 잡았지만 <span class="nb">5,000 VU</span>에서 <span class="nb">TPS 804</span></span></li>
+            <li class="best"><b>Redis + Lua Script</b><span>중복 확인(Set)과 재고 차감(DECR)을 한 번에 → <span class="nb">3,000 VU</span>에서 <span class="num">TPS 1,488</span>, <span class="nb">5,000 VU</span>까지 <span class="nb">P95 1초</span> 미만</span></li>
+            <li><b>Redis + Kafka (설계)</b><span><span class="nb">7,000 VU</span>부터 <span class="nb">P95 3.5초</span> → 발급 확정과 DB 저장을 생산자·소비자로 나누는 구조</span></li>
+          </ol>
+          <div class="think">
+            <p class="think-h">다음 단계로 고민한 것 — 블룸 필터 <span class="badge">설계 · 측정 전</span></p>
+            <dl class="think-list">
+              <dt>문제</dt><dd>같은 사람이 버튼을 연타해도 요청이 전부 Redis까지 가서, 정상 요청보다 중복 요청이 Redis를 먼저 바쁘게 만든다</dd>
+              <dt>생각한 구조</dt><dd>Redis 앞에 블룸 필터를 두고 「이미 요청한 사람」을 먼저 걸러, 처음 온 요청만 Lua Script로 보낸다. 유저 ID를 Set에 그대로 쌓으면 100만 명에 약 50~100MB인데, 블룸 필터는 수 MB로 끝난다</dd>
+              <dt>걸리는 점</dt><dd>지울 수 없어서 DB 저장이 실패해도 되돌릴 수 없고, 해시가 겹치면 받지 않은 사람이 막힐 수 있다 → 삭제가 되는 Cuckoo 필터로 갈지, 차단 로그를 남겨 사후 보상할지 비교</dd>
+              <dt>검증 계획</dt><dd>같은 환경에서 k6 부하 + Redis CPU·명령 수 + 「필터에서 막힌 수」 지표를 함께 보고, 개선 전후를 숫자로 비교</dd>
+            </dl>
+          </div>
+          <p class="muted" style="font-size:var(--t-sm)">공식 문서·소스코드로 Redis 학습 체계를 직접 짜서 2주간 파고들었습니다.</p>
+          <ul class="tags"><li>Spring Boot</li><li>MSA</li><li>Redis</li><li>Lua</li><li>k6</li><li>Kafka 설계</li></ul>
+        </article>
+
+        <article class="card reveal" style="--d:var(--stagger)">
+          <div class="with-shot">
+            <div>
+              <h3>Daymo — 여행 노트 앱</h3>
+              <p class="when">개인 · 2026.08 ~ 운영 중</p>
+              <p>연인·친구와 함께 여행을 계획하고 기록하는 앱을 혼자 기획·개발해 App Store에 냈습니다.</p>
+              <ul>
+                <li>FastAPI·PostgreSQL 서버를 처음부터 설계</li>
+                <li>Docker로 VPS 배포, 테스트를 통과한 것만 자동 배포</li>
+                <li>백업·인증서 갱신을 타이머로 직접 운영</li>
+              </ul>
+            </div>
+            <img class="shot" src="assets/daymo-home.jpg" width="120" height="248" alt="Daymo 홈 화면. 다음 여행 카드와 일정·장소·준비물 개수가 보인다">
+          </div>
+          <div class="links">
+            <a href="https://apps.apple.com/kr/app/id6814596696" target="_blank" rel="noopener">App Store<span class="sr">(새 창)</span></a>
+            <a href="https://www.daymo.xyz/app" target="_blank" rel="noopener">웹에서 써 보기<span class="sr">(새 창)</span></a>
+          </div>
+          <ul class="tags" style="margin-top:var(--s-3)"><li>FastAPI</li><li>PostgreSQL</li><li>Docker</li><li>Expo</li></ul>
+        </article>
+
+        <article class="card reveal" style="--d:var(--stagger)">
+          <h3>배포·인프라</h3>
+          <p class="when">미래내일 일경험 · 관리자 중심 쇼핑몰 플랫폼</p>
+          <ul>
+            <li>GitHub Actions로 main 푸시 시 자동 빌드·배포, rsync와 심볼릭 링크로 무중단 전환</li>
+            <li>Nginx로 Java·Python 두 서버를 경로별로 나눠 보냄</li>
+          </ul>
+          <ul class="tags"><li>GitHub Actions</li><li>Nginx</li><li>Linux</li></ul>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="text sec reveal" id="can" aria-labelledby="can-h">
+    <div class="sec-head"><h2 id="can-h">기술</h2></div>
+    <ul class="can">
+      <li><b>백엔드</b><span class="muted">Java·Spring Boot(MSA), Python·FastAPI, PostgreSQL·MySQL, Redis, Kafka(설계)</span></li>
+      <li><b>프론트엔드</b><span class="muted">React·TypeScript, React Native(Expo)</span></li>
+      <li><b>인프라·배포</b><span class="muted">Docker, Nginx, GitHub Actions, Linux VPS 운영</span></li>
+      <li><b>테스트·측정</b><span class="muted">k6 부하 테스트, JUnit·Mockito</span></li>
+      <li><b>AI·자동화</b><span class="muted">Claude Code 훅·스킬·플러그인 제작, 사내 업무 자동화 도구</span></li>
+    </ul>
+  </section>
+
+  <section class="text sec reveal" id="edu" aria-labelledby="edu-h">
+    <div class="sec-head"><h2 id="edu-h">교육</h2></div>
+    <dl class="rows">
+      <dt>2024.09 ~ 2025.06</dt><dd>NHN Academy 백엔드 과정 수료</dd>
+      <dt>프로그래머스</dt><dd>백엔드 단기심화 4기 수료</dd>
+      <dt>재학</dt><dd>경남대학교 컴퓨터공학 마지막 학기</dd>
+    </dl>
+  </section>
+
+  <section class="text sec reveal" id="contact" aria-labelledby="contact-h">
+    <div class="sec-head"><h2 id="contact-h">연락</h2></div>
+    <dl class="rows">
+      <dt>오픈채팅</dt><dd><a href="https://open.kakao.com/o/sdQ2ldVi" target="_blank" rel="noopener">open.kakao.com/o/sdQ2ldVi<span class="sr">(새 창)</span></a></dd>
+      <dt>가능한 시간</dt><dd>평일 저녁 7시~12시 · 주말 거의 종일</dd>
+      <dt>GitHub</dt><dd><a href="https://github.com/HwangSlater" target="_blank" rel="noopener">github.com/HwangSlater<span class="sr">(새 창)</span></a></dd>
+    </dl>
+  </section>
+
+  <div class="dock is-hidden"><a class="btn btn-primary" href="https://open.kakao.com/o/sdQ2ldVi" target="_blank" rel="noopener">오픈채팅으로 연락<span class="sr">(새 창)</span></a></div>
+
+  <footer class="text foot"><span>© 2026 문찬희</span><span>이 사이트는 직접 만든 ui-design-director 스킬로 디자인했습니다 · <a href="#top">위로</a></span></footer>
+</main>
+<script src="site.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,37 @@
+/* 디자인 값의 유일한 출처 — 근거와 명암비는 DESIGN.md 「Tokens」.
+ * 페이지·부품 CSS 는 여기 이름만 쓴다(값을 직접 적지 않는다). */
+:root {
+  /* 색 — Color Hunt 2D4059·EA5455·F07B3F·FFD460 에서. 빨강은 글자로 읽히게 #C8383A 로 낮춤(흰 바탕 5.14) */
+  --c-bg: #FFFFFF;
+  --c-surface: #F6F7F9;
+  --c-text: #2D4059;
+  --c-action: #2D4059;
+  --c-on-action: #FFFFFF;
+  --c-accent: #C8383A;
+  --c-muted: color-mix(in srgb, var(--c-text) 66%, var(--c-bg));
+  --c-line: color-mix(in srgb, var(--c-text) 13%, var(--c-bg));
+  --c-hover: color-mix(in srgb, var(--c-text) 6%, var(--c-surface));
+  --c-hero: color-mix(in srgb, var(--c-text) 7%, var(--c-bg));
+
+  /* 글꼴 */
+  --f-sans: "Pretendard Variable", "Pretendard", "Apple SD Gothic Neo", "Malgun Gothic", system-ui, sans-serif;
+  --t-name: 44px; --t-name-sm: 32px;
+  --t-h2: 18px; --t-h3: 17px; --t-lead: 17px; --t-body: 16px; --t-sm: 14px; --t-xs: 12px;
+  --lh-body: 1.7; --lh-head: 1.25;
+
+  /* 간격 — 4px 단위 */
+  --s-1: 4px; --s-2: 8px; --s-3: 12px; --s-4: 16px; --s-5: 20px; --s-6: 24px; --s-8: 32px; --s-10: 40px; --s-14: 56px; --s-18: 72px;
+
+  /* 폭 */
+  --w-text: 640px; --w-wide: 1000px; --w-nav: 1000px;
+
+  /* 모양 */
+  --r-card: 12px; --r-btn: 8px; --r-tag: 6px; --r-pill: 999px;
+  --target: 44px;
+  --dur: 150ms;
+}
+@media (prefers-reduced-motion: reduce) { :root { --dur: 0ms; } }
+
+/* 움직임 — DESIGN.md 「motion」. 줄이기 설정이면 0 */
+:root { --dur-in: 520ms; --ease-out: cubic-bezier(.2,.7,.2,1); --rise: 14px; --stagger: 70ms; }
+@media (prefers-reduced-motion: reduce) { :root { --dur-in: 0ms; --rise: 0px; --stagger: 0ms; } }
