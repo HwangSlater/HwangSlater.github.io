@@ -113,13 +113,61 @@ a:focus-visible, button:focus-visible { outline: 2px solid var(--c-accent); outl
 .hero > :nth-child(3) { animation-delay: calc(var(--stagger) * 2); }
 .hero > :nth-child(4) { animation-delay: calc(var(--stagger) * 3); }
 
-.js .reveal { opacity: 0; transform: translateY(var(--rise)); transition: opacity var(--dur-in) var(--ease-out), transform var(--dur-in) var(--ease-out); transition-delay: var(--d, 0ms); }
-.js .reveal.is-in { opacity: 1; transform: none; }
+/* 나타나기는 translate, 올려 보기는 transform 으로 나눈다. 둘 다 transform 이면 다 나타난 뒤의 transform: none 이
+ * 카드 뜨기를 덮어 올려도 안 떴다(2026-11-02 확인). 글자는 위치가 먼저 서고 흐림은 조금 늦게 걷히게 */
+.js .reveal { opacity: 0; translate: 0 var(--rise);
+  transition: opacity var(--dur-in) ease-out var(--d, 0ms), translate var(--dur-in) var(--ease-out) var(--d, 0ms); }
+.js .reveal.is-in { opacity: 1; translate: none; }
 
-/* 카드 — 올려 보면 살짝 뜬다 */
+/* 이름 — 한 글자씩 아래에서 올라온다(site.js 가 글자를 나눈다) */
+.hero h1:has(.ch) { animation: none; }
+.hero h1 .ch { display: inline-block; --rise: 0.5em; animation: rise var(--dur-in) var(--ease-out) both;
+  animation-delay: calc(var(--stagger) + var(--i) * var(--letter)); }
+
+/* 첫 화면 뒤 — 흐린 빨강·남색 빛이 천천히 떠다닌다 */
+.hero { position: relative; overflow: hidden; isolation: isolate; }
+.hero::before, .hero::after { content: ""; position: absolute; z-index: -1; width: 46vmax; aspect-ratio: 1; border-radius: 50%;
+  filter: blur(60px); opacity: 0.16; animation: drift var(--glow-loop) ease-in-out infinite alternate; }
+.hero::before { background: var(--c-accent); left: -12vmax; top: -18vmax; }
+.hero::after { background: var(--c-text); right: -14vmax; bottom: -24vmax; animation-delay: calc(var(--glow-loop) / -2); }
+@keyframes drift { to { translate: 14vmax 8vmax; } }
+
+/* 구역 제목 — 나타나면 빨간 밑줄이 왼쪽부터 그어진다. 열 이름은 왼쪽에서 들어온다 */
+.sec-head h2 { position: relative; padding-bottom: var(--s-1); }
+.sec-head h2::after { content: ""; position: absolute; left: 0; bottom: 0; width: 1.6em; height: 3px; background: var(--c-accent);
+  scale: 0 1; transform-origin: left; transition: scale var(--dur-in) var(--ease-out) calc(var(--stagger) * 2); }
+.sec-head.is-in h2::after, html:not(.js) .sec-head h2::after { scale: 1 1; }
+.js .col-label.reveal { translate: calc(var(--side) * -0.5) 0; }
+.js .col-label.reveal.is-in { translate: none; }
+
+/* 카드 — 더 멀리서 살짝 작았다가 나타난다. 두 열일 때는 AX 가 왼쪽, 백엔드가 오른쪽에서 */
 .card { transition: transform var(--dur) var(--ease-out), border-color var(--dur), box-shadow var(--dur); }
-.card:hover { transform: translateY(-2px); border-color: color-mix(in srgb, var(--c-text) 24%, var(--c-bg));
+.js .card.reveal { --rise: var(--rise-card); scale: 0.96;
+  transition: opacity var(--dur-in) ease-out var(--d, 0ms), translate var(--dur-in) var(--ease-out) var(--d, 0ms),
+  scale var(--dur-in) var(--ease-out) var(--d, 0ms), transform var(--dur) ease-out, border-color var(--dur), box-shadow var(--dur); }
+.js .card.reveal.is-in { scale: 1; }
+@media (min-width: 881px) {
+  .js .two > div:first-child .card.reveal { translate: calc(var(--side) * -1) 0; }
+  .js .two > div:last-child .card.reveal { translate: var(--side) 0; }
+  .js .two > div .card.reveal.is-in { translate: none; }
+}
+/* 올려 보면 뜨고, 마우스를 따라 살짝 기운다(site.js). 손가락은 hover 가 없어 뺀다 */
+@media (hover: hover) and (pointer: fine) { .card:hover { transform: translateY(-3px); } }
+.card:hover { border-color: color-mix(in srgb, var(--c-text) 24%, var(--c-bg));
   box-shadow: 0 8px 24px color-mix(in srgb, var(--c-text) 8%, transparent); }
+
+/* 읽은 만큼 위쪽에 빨간 줄(site.js 가 늘린다) */
+.progress { position: fixed; z-index: 6; inset: 0 0 auto 0; height: 3px; background: var(--c-accent);
+  transform-origin: left; transform: scaleX(0); pointer-events: none; }
+
+/* 움직임 줄이기 — 떠다니는 빛·기울기·밑줄 긋기는 빼고 바로 보인다(나머지는 tokens.css 에서 0) */
+@media (prefers-reduced-motion: reduce) {
+  .hero::before, .hero::after { animation: none; }
+  .sec-head h2::after { scale: 1 1; transition: none; }
+  .js .card.reveal { scale: 1; }
+  .js .col-label.reveal, .js .two > div .card.reveal { translate: none; }
+  .progress { display: none; }
+}
 
 /* 쿠폰 단계 — 카드가 보이면 번호가 차례로 켜지고, 가장 좋았던 단계가 마지막에 채워진다 */
 .js .steps li::before { transition: background var(--dur-in), color var(--dur-in), border-color var(--dur-in); }

@@ -7,7 +7,52 @@
   var showAll = function () { document.querySelectorAll(".reveal, .steps").forEach(function (el) { el.classList.add("is-in"); }); };
   /* ⚠️ 자동 브라우저(캡처·미리보기 봇)는 html 의 scroll-behavior: smooth 때문에 스크롤이 목적지에 닿기 전에 다음 칸으로
    *    넘어가, 아래 구역이 켜지지 않은 채 찍혔다(2026-11-02). 사람이 아니면 처음부터 다 보여 준다. */
+  /* 제목·열 이름도 나타나게. 한 열 안 카드는 차례로(왼쪽 열 먼저) */
+  document.querySelectorAll(".sec-head, .col-label").forEach(function (el) { el.classList.add("reveal"); });
+  document.querySelectorAll(".two > div").forEach(function (col, c) {
+    col.querySelectorAll(".card.reveal").forEach(function (card, i) {
+      card.style.setProperty("--d", "calc(var(--stagger) * " + (c + i * 2) + ")");
+    });
+  });
   if (reduce || navigator.webdriver || !("IntersectionObserver" in window)) { showAll(); return; }
+
+  /* 이름을 글자마다 나눈다. 화면 읽기 프로그램은 통째로 읽게 */
+  var h1 = document.querySelector(".hero h1");
+  if (h1) {
+    var name = h1.textContent;
+    h1.setAttribute("aria-label", name);
+    h1.textContent = "";
+    Array.prototype.forEach.call(name, function (ch, i) {
+      var s = document.createElement("span");
+      s.className = "ch"; s.setAttribute("aria-hidden", "true"); s.style.setProperty("--i", i); s.textContent = ch;
+      h1.appendChild(s);
+    });
+  }
+  /* 숨긴 상태를 한 번 그려 둬야 처음부터 화면 안에 있던 것도 나타나는 게 보인다 */
+  void document.body.offsetHeight;
+
+  /* 읽은 만큼 위쪽 빨간 줄 */
+  var bar = document.createElement("div");
+  bar.className = "progress"; bar.setAttribute("aria-hidden", "true");
+  document.body.appendChild(bar);
+  var paintBar = function () {
+    var max = root.scrollHeight - window.innerHeight;
+    bar.style.transform = "scaleX(" + (max > 0 ? window.scrollY / max : 0) + ")";
+  };
+  paintBar();
+
+  /* 카드가 마우스를 따라 살짝 기운다(마우스가 있을 때만) */
+  var MAX_TILT_DEG = 5;
+  if (window.matchMedia("(hover: hover) and (pointer: fine)").matches) {
+    document.querySelectorAll(".card").forEach(function (card) {
+      card.addEventListener("pointermove", function (e) {
+        var r = card.getBoundingClientRect();
+        var x = (e.clientX - r.left) / r.width - 0.5, y = (e.clientY - r.top) / r.height - 0.5;
+        card.style.transform = "perspective(900px) rotateX(" + (-y * MAX_TILT_DEG) + "deg) rotateY(" + (x * MAX_TILT_DEG) + "deg) translateY(-3px)";
+      });
+      card.addEventListener("pointerleave", function () { card.style.transform = ""; });
+    });
+  }
 
   /* 구역·카드가 화면 아래 15% 전에 들어오면 켠다. 같은 줄의 카드는 70ms 씩 늦게. */
   var io = new IntersectionObserver(function (entries) {
@@ -24,7 +69,7 @@
     });
   };
   var queued = false;
-  var onMove = function () { if (queued) return; queued = true; requestAnimationFrame(function () { queued = false; sweep(); }); };
+  var onMove = function () { if (queued) return; queued = true; requestAnimationFrame(function () { queued = false; sweep(); paintBar(); }); };
   window.addEventListener("scroll", onMove, { passive: true });
   window.addEventListener("resize", onMove);
   window.addEventListener("beforeprint", showAll);

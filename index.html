@@ -7,6 +7,8 @@
 <meta property="og:title" content="문찬희 — 백엔드 · AX 개발">
 <meta property="og:description" content="현장에서 손으로 하던 일을 찾아, 실제로 돌아가는 서비스로 만듭니다.">
 <meta name="description" content="현장 문제를 받아 돌아가는 서비스로 만드는 백엔드 · AX 개발자 문찬희의 자기소개">
+<!-- 숨김 표시는 그리기 전에 붙인다. site.js 가 붙이면 이미 보이던 구역이 사라졌다 다시 나타난다(2026-11-02 측정). 못 받으면 아래 onerror 가 뗀다. -->
+<script>document.documentElement.classList.add("js")</script>
 <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fonts-archive/CookieRun/subsets/CookieRun-dynamic-subset.css">
 <link rel="stylesheet" href="tokens.css">
@@ -104,7 +106,7 @@
       <div>
         <p class="col-label">백엔드</p>
 
-        <article class="card reveal" style="--d:var(--stagger)">
+        <article class="card reveal">
           <h3>선착순 쿠폰 — 발급 구조를 4단계로 다시 짜기</h3>
           <p class="when">프로그래머스 단기심화 4기 · MSA 중고거래 플랫폼 · 쿠폰 서비스 담당 · 2026.01 ~ 2026.02</p>
           <ol class="steps">
@@ -129,7 +131,7 @@
           <ul class="tags" style="margin-top:var(--s-3)"><li>Spring Boot</li><li>MSA</li><li>Redis</li><li>Lua</li><li>k6</li><li>Kafka 설계</li></ul>
         </article>
 
-        <article class="card reveal" style="--d:var(--stagger)">
+        <article class="card reveal">
           <div class="with-shot">
             <div>
               <h3>Daymo — 여행 노트 앱</h3>
@@ -150,7 +152,7 @@
           <ul class="tags" style="margin-top:var(--s-3)"><li>FastAPI</li><li>PostgreSQL</li><li>Docker</li><li>Expo</li></ul>
         </article>
 
-        <article class="card reveal" style="--d:var(--stagger)">
+        <article class="card reveal">
           <h3>배포·인프라</h3>
           <p class="when">미래내일 일경험 · 관리자 중심 쇼핑몰 플랫폼</p>
           <ul>
@@ -181,7 +183,7 @@
         <ul class="tags" style="margin-top:var(--s-3)"><li>Spring Cloud Gateway</li><li>Eureka</li><li>JWT</li><li>Feign</li><li>MySQL</li><li>InfluxDB</li></ul>
       </article>
 
-      <article class="card reveal" style="--d:var(--stagger)">
+      <article class="card reveal">
         <h3>실시간 센서 데이터 처리 — Flow-based Programming</h3>
         <p class="when">팀 프로젝트(4명) · 2024.12</p>
         <p>학원 안 센서 데이터를 받아 노드를 이어 붙이는 방식(FBP)으로 가공해 저장하고 시각화했습니다.</p>
@@ -233,6 +235,6 @@
 
   <footer class="text foot"><span>© 2026 문찬희</span><span>이 사이트는 직접 만든 ui-design-director 스킬로 디자인했습니다 · 글꼴: 쿠키런(데브시스터즈) · <a href="#top">위로</a></span></footer>
 </main>
-<script src="site.js" defer></script>
+<script src="site.js" defer onerror="document.documentElement.classList.remove('js')"></script>
 </body>
 </html>
