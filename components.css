@@ -179,6 +179,25 @@ a:focus-visible, button:focus-visible { outline: 2px solid var(--c-accent); outl
 .js .steps.is-in li:nth-child(4) { transition-delay: calc(var(--stagger) * 6); }
 .js .steps.is-in li.best::before { transition-delay: calc(var(--stagger) * 5); }
 
+/* ── 스크롤 따라 연출(scroll-story.js 가 켠다. 움직임 줄이기에서는 스크립트가 돌지 않아 위 기본 동작 그대로) ── */
+/* 소개 글 — 낱말이 흐리게 있다가 화면 가운데 줄을 지나면 진해진다 */
+.about.by-scroll .w { opacity: var(--word-dim); transition: opacity var(--dur) linear; }
+.about.by-scroll .w.lit { opacity: 1; }
+.js .about.reveal.by-scroll { opacity: 1; translate: none; }
+
+/* 첫 화면 — 내려가면 조금 작아지며 뒤로 물러난다(--out 0~1) */
+.hero.scrolling > * { animation: none; opacity: calc(1 - var(--out, 0) * var(--out-fade));
+  transform: translateY(calc(var(--out, 0) * var(--out-y))) scale(calc(1 - var(--out, 0) * var(--out-scale))); }
+
+/* 쿠폰 단계 — 단계 사이 선이 스크롤만큼 빨갛게 채워지고, 선이 닿은 번호가 켜진다. 차례로 켜기(위)를 대신한다 */
+.steps.by-scroll { position: relative; }
+.steps.by-scroll .fill { position: absolute; left: 13px; width: 2px; margin-left: -0.5px;
+  background: var(--c-accent); transform-origin: top; transform: scaleY(var(--p, 0)); }
+.js .steps.by-scroll li, .js .steps.by-scroll.is-in li { opacity: var(--step-dim); transition: opacity var(--dur-in) var(--ease-out); transition-delay: 0ms; }
+.js .steps.by-scroll li.on { opacity: 1; }
+.js .steps.by-scroll li.on::before { border-color: var(--c-accent); transition-delay: 0ms; }
+.js .steps.by-scroll li.best:not(.on)::before { background: var(--c-bg); color: var(--c-text); border-color: var(--c-line); }
+
 /* 위쪽 탭 — 지금 보는 구역을 따라간다(site.js) */
 .tabs a { transition: background var(--dur), color var(--dur); }
 

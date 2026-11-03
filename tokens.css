@@ -41,5 +41,11 @@
   --letter: 70ms;      /* 이름 글자 사이 */
   --rise-card: 56px;   /* 카드는 더 멀리서 */
   --side: 72px;        /* 두 열 카드가 옆에서 들어오는 거리 */
-  --glow-loop: 14s; }  /* 첫 화면 뒤 빛이 한 번 오가는 시간 */
+  --glow-loop: 14s;    /* 첫 화면 뒤 빛이 한 번 오가는 시간 */
+  --word-dim: 0.18;    /* 소개 글 — 아직 읽지 않은 낱말 진하기 */
+  --step-dim: 0.35;    /* 쿠폰 단계 — 선이 아직 안 닿은 단계 진하기 */
+  --count-dur: 1400ms; /* TPS 숫자가 0 에서 올라가는 시간 */
+  --out-y: 80px;       /* 내려가면 첫 화면이 물러나는 거리 */
+  --out-scale: 0.08;   /* 그때 작아지는 비율 */
+  --out-fade: 0.9; }   /* 그때 흐려지는 비율 */
 @media (prefers-reduced-motion: reduce) { :root { --dur-in: 200ms; --rise: 0px; --rise-card: 0px; --side: 0px; --stagger: 0ms; } }
